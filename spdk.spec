@@ -64,7 +64,8 @@ BuildRequires: %(echo "%{build_requirements_list}")
 
 License:       BSD
 URL:           https://spdk.io
-Source:        https://github.com/spdk/spdk/archive/refs/tags/%{version}.tar.gz
+Source0:       https://github.com/spdk/spdk/archive/refs/tags/%{version}.tar.gz
+Source1:       spdk-%{version}.tar.gz
 
 %description
 
