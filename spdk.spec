@@ -1,21 +1,20 @@
 # Global macros
-%define debug_package %{nil}
 
-%{!?deps:%define deps 1}
-%{!?dpdk:%define dpdk 0}
-%{!?dpdk_build_path:%define dpdk_build_path "dpdk/build"}
-%{!?dpdk_path:%define dpdk_path "dpdk"}
-%{!?requirements:%define requirements 0}
-%{!?build_requirements:%define build_requirements 0}
-%{!?shared:%define shared 1}
-%{!?rbd:%define rbd 0}
-%{!?libdir:%define libdir /usr/local/lib}
-%{!?vfio_user:%define vfio_user 0}
+%define deps 1
+%define dpdk 0
+%define dpdk_build_path "dpdk/build"
+%define dpdk_path "dpdk"
+%define requirements 0
+%define build_requirements 0
+%define shared 1
+%define rbd 0
+%define libdir /usr/local/lib
+%define vfio_user 0
 
 # Spec metadata
 Name:           spdk
 Version:        22.09
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Storage Performance Development Kit
 
 # This is a minimal set of requirements needed for SPDK apps to run when built with
@@ -64,7 +63,7 @@ BuildRequires: %(echo "%{build_requirements_list}")
 
 License:       BSD
 URL:           https://spdk.io
-Source0:       spdk-%{version}.tar.gz
+Source0:       https://github.com/spdk/spdk/archive/refs/tags/v%{version}.tar.gz
 
 %description
 
@@ -214,6 +213,9 @@ ldconfig
 %endif
 
 %changelog
+* Fri Apr 28 2023 Milkice Qiu <milkice@milkice.me>
+- Optimize spec file
+
 * Thu Jan 19 2023 Milkice Qiu <milkice@milkice.me>
 - Port to Fedora Build System
 
